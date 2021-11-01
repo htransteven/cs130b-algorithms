@@ -1,6 +1,7 @@
 #include <iostream>
 #include "global_inputs.h"
 #include "string"
+#include <functional>
 
 using namespace std;
 
@@ -9,7 +10,7 @@ string input_file_name = "";
 string output_file_name = "";
 
 // returns true if successful
-bool load_global_inputs(int argc, char* argv[]) {
+bool load_global_inputs(int argc, char* argv[], void (*callback)(int, char*[], int)) {
     for(int i = 1; i < argc; i++) {
         string token = argv[i];
         if(token == "-v") {
@@ -22,6 +23,8 @@ bool load_global_inputs(int argc, char* argv[]) {
 
             input_file_name = argv[i + 1];
             i++;
+        } else {
+            callback(argc, argv, i);
         }
     }
 
