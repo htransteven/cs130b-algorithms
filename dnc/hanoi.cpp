@@ -1,7 +1,6 @@
 #include <iostream>
 #include "../global_inputs.h"
 #include "string"
-#include <functional>
 #include <vector>
 #include <unordered_map>
 
